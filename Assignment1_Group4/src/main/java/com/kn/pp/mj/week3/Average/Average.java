@@ -39,7 +39,7 @@ public class Average extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		response.setContentType("text/html");  
-	    PrintWriter out = response.getWriter();  
+		PrintWriter out = response.getWriter();  
 	    
 		     String name=request.getParameter("name");
 			int num1=Integer.parseInt(request.getParameter("no1"));
@@ -63,7 +63,51 @@ public class Average extends HttpServlet {
 					        if  (marks[i] < min )
 					            min = marks[i];
 					    }
-			 
+			 String grades;
+			 if(avg<=49 && avg >0)
+			 {
+				 grades="F";
+			 }
+			 else if(avg<=59 && avg >=50)
+			 {
+				 grades="D";
+			}
+			 else if(avg<=62 && avg >=60)
+			 {
+				 grades="C-";
+			 }
+			 else if(avg<=66 && avg >=63)
+			 { 
+				 grades="C";
+			 }else if(avg<=69 && avg >=67)
+			 { 
+				 grades="C+";
+			 }
+			 else if(avg<=72 && avg >=70)
+			 { 
+				 grades="B-";
+			 }
+			 else if(avg<=76 && avg >=73)
+			 {
+				 grades="B";
+			 }
+			 else if(avg<=70 && avg >=77)
+			 {
+				 grades="B+";
+			 }
+			 else if(avg<=86 && avg >=80)
+			 { 
+				 grades="A-";
+			 }
+			 else if(avg<=93 && avg >=87)
+			 {
+				 grades="A";
+			}
+			 else 
+			 {
+				 grades="A+";
+			}
+			 out.println("Grade "+grades);			 
 			 out.print("Subject 1:"+num1+"\n Subject 2:" +num2+"\n Subject 3:" +num3+"\n Subject 4:" +num4+"\n Subject 5:" +num5+"\n Average"+avg+"\n max:"+max+"min"+min);
 	}
 
