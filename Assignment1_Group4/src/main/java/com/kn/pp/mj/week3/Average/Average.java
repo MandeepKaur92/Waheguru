@@ -3,6 +3,7 @@ package com.kn.pp.mj.week3.Average;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,6 +43,7 @@ public class Average extends HttpServlet {
 		PrintWriter out = response.getWriter();  
 	    
 		     String name=request.getParameter("name");
+		    
 			int num1=Integer.parseInt(request.getParameter("no1"));
 			int num2=Integer.parseInt(request.getParameter("no2"));
 			int num3=Integer.parseInt(request.getParameter("no3"));
@@ -107,8 +109,21 @@ public class Average extends HttpServlet {
 			 {
 				 grades="A+";
 			}
-			 out.println("Grade "+grades);			 
+			 out.println("Grade: "+grades);			 
 			 out.print("Subject 1:"+num1+"\n Subject 2:" +num2+"\n Subject 3:" +num3+"\n Subject 4:" +num4+"\n Subject 5:" +num5+"\n Average"+avg+"\n max:"+max+"min"+min);
+			 
+			 request.setAttribute("min",min);
+			 request.setAttribute("max", max);
+			 request.setAttribute("avg", avg);
+			 request.setAttribute("grades",grades);
+			 
+			 
+		      //response.sendRedirect("final.jsp");
+			 //response.sendRedirect("final.jsp?min="+min+"&max="+max);
+			  RequestDispatcher rd=request.getRequestDispatcher("/final.jsp");  
+		      rd.forward(request,response); 
+			 
+			 //response.sendRedirect("final.jsp?min="+min+"&max="+max+"&avg="+avg+"grades"+grades);
 	}
 
 }
