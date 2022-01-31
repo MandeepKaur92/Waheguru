@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+body
+{
+	 background-color: pink;
+	 font-style: normal;
+     font-family: "Times New Roman", Times, Serif;
+}
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
